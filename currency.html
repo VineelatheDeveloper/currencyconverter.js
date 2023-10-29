@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>currency</title>
+  </head>
+  <body>
+    <style>
+body{
+        background-color: rgba(4, 206, 11, 0.589);
+  
+}
+#main{
+    margin-top: 200px;
+    margin-left: 30%;
+    border: 2px solid black;
+    height: 250px;
+    width: 350px;
+    background-color:  rgb(130, 161, 28);
+}
+#amt{
+    width: 100px;
+}
+h1{
+    margin-left: 40px;
+}
+label{
+margin-left: 55px;
+
+}
+button{
+    margin-left: 55px;
+    height: 25px;
+    width: 100px;
+    border-radius: 10px;
+}
+#conv{
+    width: 100px;
+}
+    </style>
+    <div id="main">
+      <div>
+        <h1>Currency Converter</h1>
+        <label for="amt">Amount:</label>
+        <input type="text" id="amt" />
+      </div>
+      <br />
+      <div>
+        <label for="input">Currency Type:</label>
+        <select id="input">
+          <option value="united">USD</option>
+          <option value="britian">GBP</option>
+          <option value="europe">EUR</option>
+          <option value="australia">AUD</option>
+        </select>
+        <br />
+        <br />
+        <button>Calculate:</button>
+        <br />
+        <br>
+        <div>
+          <label for="conv">convertedAmount:</label>
+          <input type="text" id="conv" />
+        </div>
+      </div>
+    </div>
+    <script>
+      let button = document.querySelector("button");
+      button.addEventListener('click', display);
+
+      function display() {
+        let exchangeRates = {
+        united: 82,
+        britian: 100,
+        europe: 88.25,
+        australia: 52.84,
+      };
+       
+        let input = document.querySelector("#input");
+        let amt = document.querySelector("#amt").value;
+        let converter = input.options[input.selectedIndex].value;
+        let output = document.querySelector("#conv");
+
+        if (exchangeRates) {
+        let convertedAmount = amt * exchangeRates[converter];
+        output.value = convertedAmount.toFixed(0) ;
+      } else if (isNaN(amt)) {
+        output.value = "Please enter a valid amount.";
+      } else {
+        output.value = "Invalid currency selection.";
+      }
+        
+             }
+    </script>
+  </body>
+</html>
